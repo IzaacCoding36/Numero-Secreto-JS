@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="IzaacCoding36">
-    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Esse site apresenta um jogo de adivinhar o número secreto utilizando JavaScript.">
     <meta name="keywords" content="HTML, CSS, JavaScript, Projeto, Jogo">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/jpg" href="img/favicon.ico"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>    
     <title>Jogo JS - Número Secreto</title>
-    <base href="index.html">
 </head>
 <body>
-    <div class="container">
-        <div class="container__conteudo">
+    <main class="container">
+        <section class="container__conteudo">
             <img src="./img/robot.png" alt="robô mergulhador" class="container__imagem-robo" />
             <div class="container__informacoes">
-                <img src="./img/trophy.png" alt="ícone de um troféu" />
-                <div class="container__texto">
-                    <h1>Você <span class="container__texto-azul">acertou!</span></h1>
-                    <h2>Você descobriu o número secreto!</h2>
+                <div class="container__jogo" id="gameArea">
+                    <h1>Jogo do <span class="container__texto-azul">Número Secreto</span></h1>
+                    <p class="container__instrucoes">Escolha um número entre <span id="minNumber">1</span> e <span id="maxNumber">5000</span></p>
+                    
+                    <form class="container__form" id="guessForm">
+                        <input 
+                            type="number" 
+                            id="guessInput" 
+                            class="container__input" 
+                            placeholder="Digite seu palpite..." 
+                            min="1" 
+                            max="5000" 
+                            required
+                        >
+                        <button type="submit" class="container__botao">Confirmar</button>
+                    </form>
+                    
+                    <div class="container__feedback" id="feedback" aria-live="polite"></div>
+                    <div class="container__tentativas" id="attempts">Tentativas: <span id="attemptCount">0</span></div>
+                </div>
+                
+                <div class="container__vitoria hidden" id="victoryArea">
+                    <img src="./img/trophy.png" alt="ícone de um troféu" />
+                    <div class="container__texto">
+                        <h1>Você <span class="container__texto-azul">acertou!</span></h1>
+                        <h2 id="victoryMessage">Você descobriu o número secreto!</h2>
+                    </div>
+                    <button class="container__botao" id="newGameBtn">Novo Jogo</button>
                 </div>
             </div>
-        </div>
-    </div>
-<script src="app.js" defer></script>
+        </section>
+    </main>
+    <script src="app.js" defer></script>
 </body>
 </html>
